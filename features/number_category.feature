@@ -5,17 +5,13 @@ Feature: Pozitív/Negatív/Nulla szám kategorizálása
   # 2. Negatív szám kategorizálása (pl. -5)
   # 3. Nulla kategorizálása (0)
 
-  Scenario: Páros szám kategorizálása (pl. 5)
-  Given the number is 5
-  when I categorize the number
-  Then the result should be "Pozitív"
-
-  Scenario: Páros szám kategorizálása (pl. -5)
-  Given the number is -5
+Scenario Outline: 
+  Given the number is <number>
   When I categorize the number
-  Then the result should be "Negatív"
+  Then the result should be "<result>"
 
-  Scenario: Páros szám kategorizálása (pl. 0)
-  Given the number is 0
-  When I categorize the number
-  Then the result should be "Nulla"
+Examples:
+  | number         | result |
+  | 5              | Pozitív |
+  | -5             | Negatív |
+  | 0              | Nulla  |
